@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Humanoid Robotics Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background-color: #f4f7fa;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: #1c1c2e;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1.5rem;
+      color: #00d1b2;
+    }
+
+    .nav-item {
+      padding: 15px 25px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .nav-item:hover {
+      background: #2e2e4d;
+    }
+
+    /* Main content */
+    .main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .header {
+      background: #fff;
+      padding: 15px 25px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header h1 {
+      font-size: 1.8rem;
+      color: #333;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .card p {
+      color: #666;
+    }
+
+    .status-online {
+      color: green;
+      font-weight: bold;
+    }
+
+    .status-offline {
+      color: red;
+      font-weight: bold;
+    }
+
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      color: #aaa;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+
+      .main {
+        padding: 10px;
+      }
+
+      .header h1 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <div class="sidebar">
+    <h2>🦾 HumanoidX</h2>
+    <div class="nav-item">Dashboard</div>
+    <div class="nav-item">Robots</div>
+    <div class="nav-item">Analytics</div>
+    <div class="nav-item">Logs</div>
+    <div class="nav-item">Settings</div>
+  </div>
+
+  <!-- Main Dashboard -->
+  <div class="main">
+    <div class="header">
+      <h1>Robotics Control Dashboard</h1>
+      <div id="currentTime"></div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Robot Fleet Status</h3>
+        <p>Atlas - <span class="status-online">Online</span></p>
+        <p>Nova - <span class="status-offline">Offline</span></p>
+        <p>Echo - <span class="status-online">Online</span></p>
+      </div>
+
+      <div class="card">
+        <h3>System Logs</h3>
+        <p>09:30 - Atlas started diagnostics</p>
+        <p>09:32 - Nova connection lost</p>
+        <p>09:45 - Echo completed task cycle</p>
+      </div>
+
+      <div class="card">
+        <h3>Performance Analytics</h3>
+        <p>Task Completion: 92%</p>
+        <p>Error Rate: 1.4%</p>
+        <p>Uptime: 98.7%</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      &copy; 2025 HumanoidX Robotics. All rights reserved.
+    </div>
+  </div>
+
+  <script>
+    // Real-time clock
+    function updateClock() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString();
+      document.getElementById('currentTime').textContent = timeString;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock(); // Initial call
+  </script>
+</body>
+</html>
